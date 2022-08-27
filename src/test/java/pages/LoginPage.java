@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import tests.CreateAccountTest;
 
 public class LoginPage extends BasePage{
 
@@ -20,7 +19,7 @@ public class LoginPage extends BasePage{
     @FindBy(id = "Login")
     private WebElement loginButton;
 
-    private static final Logger LOGGER = LogManager.getLogger(CreateAccountTest.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(LoginPage.class.getName());
 
     public LoginPage(WebDriver driver) {
         super(driver);

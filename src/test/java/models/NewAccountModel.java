@@ -23,4 +23,25 @@ public class NewAccountModel {
     private String shippingState;
     private String shippingZip;
     private String shippingCountry;
+
+    @Override
+    public String toString() {
+        return "Entered data: " + "\nname: " + getAccountName()
+                + "\nphone: " + getPhone()
+                + "\nType: " + getType()
+                + "\nDescription: " + getDescription()
+                + "\nWebsite: " + getWebsite()
+                + "\nIndustry: " + getIndustry()
+                + "\nEmployees: " + getEmployees()
+                + "\nBilling Street: " + getBillingStreet()
+                + "\nBilling City: " + getBillingCity()
+                + "\nBilling State/Province: " + getBillingState()
+                + "\nBilling Zip/Postal Code: " + getBillingZip()
+                + "\nBilling Country: " + getBillingCountry()
+                + "\nShipping Street: " + getBillingStreet()
+                + "\nShipping City: " + getBillingCity()
+                + "\nShipping State/Province: " + getBillingState()
+                + "\nShipping Zip/Postal Code: " + getBillingZip()
+                + "\nShipping Country: " + getBillingCountry();
+    }
 }
