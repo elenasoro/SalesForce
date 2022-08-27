@@ -2,6 +2,7 @@ package pages;
 
 import constants.Credentials;
 import constants.Urls;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +22,7 @@ public class LoginPage extends BasePage{
         super(driver);
     }
 
+    @Step("Login to Sales Force")
     public void loginToSalesforce() {
         driver.get(Urls.SALES_FORCE_LOGIN);
         usernameInput.sendKeys(Credentials.USERNAME);

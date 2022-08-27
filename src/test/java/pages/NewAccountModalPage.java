@@ -3,6 +3,7 @@ package pages;
 import elements.DropdownList;
 import elements.TextArea;
 import elements.TextInput;
+import io.qameta.allure.Step;
 import models.NewAccountModel;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,7 @@ public class NewAccountModalPage extends BasePage{
         super(driver);
     }
 
+    @Step("Fill new account form")
     public void fillInAccountForm(NewAccountModel newAccount) {
         accountNameInput.sendKeys(newAccount.getAccountName());
         new TextInput(driver, "Phone").inputText(newAccount.getPhone());
@@ -39,10 +41,6 @@ public class NewAccountModalPage extends BasePage{
         new TextInput(driver, "Shipping Zip/Postal Code").inputText(newAccount.getBillingZip());
         new TextInput(driver, "Shipping Country").inputText(newAccount.getBillingCountry());
         saveButton.click();
-    }
-
-    public String getAccountName() {
-        return accountNameInput.getText();
     }
 
 }
