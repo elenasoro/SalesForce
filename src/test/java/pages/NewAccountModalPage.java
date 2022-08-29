@@ -4,6 +4,7 @@ import constants.Credentials;
 import elements.DropdownList;
 import elements.TextArea;
 import elements.TextInput;
+import io.qameta.allure.Step;
 import models.NewAccountModel;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -26,6 +27,7 @@ public class NewAccountModalPage extends BasePage{
         super(driver);
     }
 
+    @Step("Fill new account form")
     public void fillInAccountForm(NewAccountModel newAccount) {
         accountNameInput.sendKeys(newAccount.getAccountName());
         new TextInput(driver, "Phone").inputText(newAccount.getPhone());
@@ -46,10 +48,6 @@ public class NewAccountModalPage extends BasePage{
         new TextInput(driver, "Shipping Country").inputText(newAccount.getBillingCountry());
         LOGGER.info("Create account with the following details: " + newAccount.toString());
         saveButton.click();
-    }
-
-    public String getAccountName() {
-        return accountNameInput.getText();
     }
 
 }

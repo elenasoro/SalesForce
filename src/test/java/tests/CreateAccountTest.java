@@ -1,8 +1,9 @@
 package tests;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import models.NewAccountModel;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AccountViewPage;
@@ -12,27 +13,21 @@ import testdata.PrepareNewAccountData;
 
 public class CreateAccountTest extends BaseTest{
 
-    private static final Logger LOGGER = LogManager.getLogger(CreateAccountTest.class.getName());
-
     @Test
+    @Description("User performs create account")
+    @Severity(SeverityLevel.CRITICAL)
     public void createAccountTest() {
-        LoginPage loginPage = new LoginPage(driver);
-        LOGGER.info(String.format("Page %s initiated", LoginPage.class.getName()));
+        LoginPage loginPage = new LoginPage(driverManager.getDriver());
         loginPage.loginToSalesforce();
-        AccountsPage accountsPage = new AccountsPage(driver);
-        LOGGER.info(String.format("Page %s initiated", AccountsPage.class.getName()));
+        AccountsPage accountsPage = new AccountsPage(driverManager.getDriver());
         NewAccountModel accountModel = PrepareNewAccountData.getValidData();
         accountsPage
                 .openAccountsPage()
                 .openNewAccountModal()
                 .fillInAccountForm(accountModel);
-
         String initialAccountName = accountModel.getAccountName();
-        LOGGER.debug(String.format("Account Name %s is saved", accountModel.getAccountName()));
-        AccountViewPage accountViewPage = new AccountViewPage(driver);
-        LOGGER.info(String.format("Page %s initiated", AccountViewPage.class.getName()));
+        AccountViewPage accountViewPage = new AccountViewPage(driverManager.getDriver());
         String resultAccountName = accountViewPage.getAccountName();
-        LOGGER.debug(String.format("Result name %s is saved", accountViewPage.getAccountName()));
         Assert.assertEquals(initialAccountName, resultAccountName, "New account has incorrect name");
     }
 }

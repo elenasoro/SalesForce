@@ -2,8 +2,7 @@ package pages;
 
 import constants.Credentials;
 import constants.Urls;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,19 +18,15 @@ public class LoginPage extends BasePage{
     @FindBy(id = "Login")
     private WebElement loginButton;
 
-    private static final Logger LOGGER = LogManager.getLogger(LoginPage.class.getName());
-
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
+    @Step("Login to Sales Force")
     public void loginToSalesforce() {
         driver.get(Urls.SALES_FORCE_LOGIN);
         usernameInput.sendKeys(Credentials.USERNAME);
-        LOGGER.info(String.format("Username %s is entered", Credentials.USERNAME));
         passwordInput.sendKeys(Credentials.PASSWORD);
-        LOGGER.info(String.format("Password %s is entered", Credentials.PASSWORD));
         loginButton.click();
-        LOGGER.info(String.format("Login button clicked"));
     }
 }
